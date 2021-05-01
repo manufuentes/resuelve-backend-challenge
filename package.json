@@ -1,0 +1,25 @@
+{
+  "name": "resuelve-backend-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "calcular_sueldos.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/manufuentes/resuelve-backend-challenge.git"
+  },
+  "author": "José Emmanuel Fuentes Cortés",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manufuentes/resuelve-backend-challenge/issues"
+  },
+  "homepage": "https://github.com/manufuentes/resuelve-backend-challenge#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "ramda": "^0.27.1"
+  }
+}
