@@ -1,17 +1,12 @@
 const R = require('ramda');
 
 /**
- * - Obtener path del JSON desde CLI
- * - Obtener JSON (JSON to Obj)
  * - Clasificar por equipos (Convertir lista de jugadores en listas de jugadores por equipo)
  * - Calcular rendimiento grupal
  * - Calcular rendimiento individual
  * - Calcular sueldo completo
- * - Devolver JSON con sueldos calculados
  */
     
-const getJSONPath = argv => argv[2];
-const getJSON = path => require(path);
 const groupByTeams = JSONObj => {
     const getTeamsNames = JSONObj => R.pluck('equipo', JSONObj.jugadores);
     const removeDuplicatedTeamsNames = teamsNamesList => R.uniq(teamsNamesList);
@@ -26,8 +21,7 @@ const setTeamsThrowput = teams => {
         [R.equals('A'), R.always(5)],
         [R.equals('B'), R.always(10)],
         [R.equals('C'), R.always(15)],
-        [R.equals('Cuauh'), R.always(20)],
-        
+        [R.equals('Cuauh'), R.always(20)]
     ]); 
     const setPlayerMinGoals = player => R.set(R.lensProp('minimo_goles'), tier2Goals(player.nivel), player);
     const setTeamMinGoals = team => R.map(setPlayerMinGoals, team);
@@ -57,5 +51,7 @@ const setSalary = teams => {
     return R.map(setCompleteSalaryByTeam, teams);
 };
 
-const getCompleteSalary = R.compose(setSalary, setIndividualsThrowput, setTeamsThrowput, groupByTeams, getJSON, getJSONPath);
-console.log(getCompleteSalary(process.argv));
+const reformatOutputObj = teams => R.objOf('jugadores', R.flatten(teams));
+
+const setSalaries = R.compose(reformatOutputObj, setSalary, setIndividualsThrowput, setTeamsThrowput, groupByTeams);
+exports.setSalaries = setSalaries;
