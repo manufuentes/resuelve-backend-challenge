@@ -1,6 +1,12 @@
 const R = require('ramda');
 
     
+/**
+ * Recibe una lista de jugadores y regresa una lista de listas de jugadores agrupados por equipo
+ * 
+ * @param {Obj} JSONObj 
+ * @returns JSONObj
+ */
 const groupByTeams = JSONObj => {
     const getTeamsNames = JSONObj => R.pluck('equipo', JSONObj.jugadores);
     const removeDuplicatedTeamsNames = teamsNamesList => R.uniq(teamsNamesList);
@@ -11,6 +17,16 @@ const groupByTeams = JSONObj => {
     return R.compose(updateJSONObj, groupPlayersByTeam, removeDuplicatedTeamsNames, getTeamsNames)(JSONObj);
 };
 
+/**
+ * Se asigna a cada jugador la variable rankeo_config segun la configuración por equipo
+ *      declarada en el objeto del parámetro config
+ *
+ * Se asigna las variable minimo_goles según el rankeo encontrado en la vairable rankeo_config
+ * 
+ * @param {Obj} config 
+ * @param {Obj} JSONObj 
+ * @returns JSONObj
+ */
 const setTeamsMinGoals = (config, JSONObj) => {
 
     const setMinGoalsByPlayer = player => {
@@ -37,6 +53,13 @@ const setTeamsMinGoals = (config, JSONObj) => {
     return R.set(R.lensProp('jugadores'), setMinGoals(JSONObj.jugadores), JSONObj);
 };
 
+/**
+ * A partir de la variable minimo_goles de los jugadores de CADA lista agrupada por equipos
+ *      se calcula el rendimiento grupal y se asigna a la variable alcance_equipo
+ * 
+ * @param {Obj} JSONObj 
+ * @returns JSONObj
+ */
 const setTeamsThrowput = JSONObj => {
 
     const sumTeamMinGoals = team => R.sum(R.pluck('minimo_goles', team));
@@ -50,6 +73,13 @@ const setTeamsThrowput = JSONObj => {
     return R.set(R.lensProp('jugadores'), setThrowput(JSONObj.jugadores), JSONObj);
 };
 
+/**
+ * A partir de la variable minimo_goles de calcula el rendimiento individual y se asigna
+ *      a la variable alcance_individual
+ * 
+ * @param {Obj} JSONObj 
+ * @returns JSONObj
+ */
 const setIndividualsThrowput = JSONObj => {
 
     const getPlayerThrowput = player => R.divide(player.goles, player.minimo_goles);
@@ -62,6 +92,13 @@ const setIndividualsThrowput = JSONObj => {
     return R.set(R.lensProp('jugadores'), setIThrowput(JSONObj.jugadores), JSONObj);
 };
 
+/**
+ * Haciendo uso de las variable previamente asignadas se calcula el salario del jugador
+ *      y se asigna a la variable sueldo_completo
+ * 
+ * @param {Obj} JSONObj 
+ * @returns JSONObj
+ */
 const setSalary = JSONObj => {
 
     const getBonus = player => R.multiply(player.bono, R.mean([player.alcance_equipo, player.alcance_individual]));

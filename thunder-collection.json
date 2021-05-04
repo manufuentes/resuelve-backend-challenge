@@ -1,0 +1,93 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Resuelve-backend",
+    "dateExported": "2021-05-04T22:22:24.696Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "containerId": "",
+            "sortNum": 10000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                }
+            ],
+            "colId": "0cf7df76-3e82-4c4d-b553-4bf0cdf4f15f",
+            "name": "http://localhost:3000/get_Salaries",
+            "url": "http://localhost:3000/get_salaries",
+            "method": "POST",
+            "modified": "2021-05-04T22:22:17.962Z",
+            "created": "2021-05-01T23:43:46.631Z",
+            "_id": "a8c746ac-0ee1-4920-be58-effd37f66865",
+            "body": {
+                "type": "json",
+                "raw": "{\n   \"jugadores\" : [  \n      {  \n         \"nombre\":\"Juan Perez\",\n         \"nivel\":\"C\",\n         \"goles\":10,\n         \"sueldo\":50000,\n         \"bono\":25000,\n         \"sueldo_completo\":null,\n         \"equipo\":\"rojo\"\n      },\n      {  \n         \"nombre\":\"EL Cuauh\",\n         \"nivel\":\"Cuauh\",\n         \"goles\":30,\n         \"sueldo\":100000,\n         \"bono\":30000,\n         \"sueldo_completo\":null,\n         \"equipo\":\"azul\"\n      },\n      {  \n         \"nombre\":\"Cosme Fulanito\",\n         \"nivel\":\"A\",\n         \"goles\":7,\n         \"sueldo\":20000,\n         \"bono\":10000,\n         \"sueldo_completo\":null,\n         \"equipo\":\"azul\"\n\n      },\n      {  \n         \"nombre\":\"El Rulo\",\n         \"nivel\":\"B\",\n         \"goles\":9,\n         \"sueldo\":30000,\n         \"bono\":15000,\n         \"sueldo_completo\":null,\n         \"equipo\":\"rojo\"\n\n      }\n   ]\n}"
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 20000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                }
+            ],
+            "colId": "0cf7df76-3e82-4c4d-b553-4bf0cdf4f15f",
+            "name": "http://localhost:3000/config",
+            "url": "http://localhost:3000/config",
+            "method": "POST",
+            "modified": "2021-05-04T21:41:14.741Z",
+            "created": "2021-05-02T02:40:12.105Z",
+            "_id": "9b263e7a-2f8e-4fe7-8349-f904a539c436",
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"equipos\": [\n    {\n      \"nombre\": \"Resuelve FC\",\n      \"rankeo\": {\n        \"A\": 5,\n        \"B\": 10,\n        \"C\": 15,\n        \"Cuauh\": 20\n      }\n    },\n    {\n      \"nombre\": \"rojo\",\n      \"rankeo\": {\n        \"A\": 15,\n        \"B\": 20,\n        \"C\": 35,\n        \"Cuauh\": 50\n      }\n    }\n  ]\n}"
+            },
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 30000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                }
+            ],
+            "colId": "0cf7df76-3e82-4c4d-b553-4bf0cdf4f15f",
+            "name": "http://localhost:3000/config",
+            "url": "http://localhost:3000/config",
+            "method": "GET",
+            "modified": "2021-05-04T22:22:11.758Z",
+            "created": "2021-05-02T02:40:15.470Z",
+            "_id": "eaafc77c-dd96-4860-bcb0-97ede61844bb",
+            "tests": []
+        },
+        {
+            "containerId": "",
+            "sortNum": 40000,
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "*/*"
+                },
+                {
+                    "name": "User-Agent",
+                    "value": "Thunder Client (https://www.thunderclient.io)"
+                }
+            ],
+            "colId": "0cf7df76-3e82-4c4d-b553-4bf0cdf4f15f",
+            "name": "http://localhost:3000/reset_config",
+            "url": "http://localhost:3000/reset_config",
+            "method": "GET",
+            "modified": "2021-05-04T21:40:52.225Z",
+            "created": "2021-05-02T03:04:02.726Z",
+            "_id": "1341aed0-b12c-46af-9d6d-4fceca789ca5",
+            "tests": []
+        }
+    ]
+}
